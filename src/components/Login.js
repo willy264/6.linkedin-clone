@@ -1,5 +1,7 @@
 import styled from 'styled-components'
  import React from 'react'
+ import { connect } from 'react-redux';
+ import { signInAPI } from '../actions';
 
 const Login = (props) => {
   return (
@@ -19,7 +21,7 @@ const Login = (props) => {
           <img src="/images/login-hero.svg" alt="" />
         </Hero>
         <Form>
-          <Google>
+          <Google onClick={() => props.signIn()}>
             <img src="/images/google.svg" alt="" />
             sign in with google
           </Google>
@@ -201,6 +203,14 @@ const Google = styled.button`
 `;
 
 
+const mapStateToProps = (state) => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  signIn: () => dispatch(signInAPI()),
+})
+// redux like a global store, where it gets the user login and store it, like a frontend db and can be accessed fast
 
 
-export default Login
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
