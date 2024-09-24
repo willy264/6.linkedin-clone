@@ -1,9 +1,15 @@
 import styled from 'styled-components'
- import React from 'react'
+import React, { useEffect } from "react";
  import { connect } from 'react-redux';
- import { signInAPI } from '../actions';
+ import { signInAPI } from '../redux/actions';
+ import { useNavigate } from "react-router-dom";
+ 
 
 const Login = (props) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    props.user && navigate("/home");
+  }, [props.user]);
   return (
     <Container>
       <Nav>
@@ -204,13 +210,18 @@ const Google = styled.button`
 
 
 const mapStateToProps = (state) => {
-  return {}
-}
-
-const mapDispatchToProps = (dispatch) => ({
-  signIn: () => dispatch(signInAPI()),
-})
+  return {
+    user: state.userState.user,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: () => dispatch(signInAPI()),
+  };
+};
 // redux like a global store, where it gets the user login and store it, like a frontend db and can be accessed fast
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+

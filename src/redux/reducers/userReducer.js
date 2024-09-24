@@ -1,10 +1,10 @@
 import { SET_USER } from "../actions/actionType";
 
-const INITIAL_STATE = {
+const initialState = {
   user: null,
 };
 
-const useReducer = (state = INITIAL_STATE, action) => {
+const useReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
       return {

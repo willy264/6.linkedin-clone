@@ -1,23 +1,17 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
-// import { ProviderId } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import { GoogleAuthProvider } from 'firebase/auth';
-
-// import { Firestore } from 'firebase/firestore';
-
-// import firebase from 'firebase/app'
-import 'firebase/compat/app';
-
-// import { initializeApp } from 'firebase/firestore';
-// import 'firebase/compat/auth';
-// import 'firebase/compat/firestore';
-
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: process.env.REACT_APP_FIREBAE_API_KEY,
+//   authDomain: process.env.REACT_APP_FIREBAE_AUTH_DOMAIN,
+//   projectId: process.env.REACT_APP_FIREBAE_PROJECT_ID,
+//   storageBucket: process.env.REACT_APP_FIREBAE_STORAGE_BUCKETS,
+//   messagingSenderId: process.env.REACT_APP_FIREBAE_MESSAGING_SENDER_ID,
+//   appId: process.env.REACT_APP_FIREBAE_APP_ID,
+// };
 const firebaseConfig = {
   apiKey: "AIzaSyDpb4yOTVbFJ30MLm5pu3ZEctTOuXTOmcc",
   authDomain: "linkedin-clone-dd55a.firebaseapp.com",
@@ -28,18 +22,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig)
-const db = getFirestore(firebaseApp);
-const auth=getAuth()
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app);
+const auth = getAuth(app)
 const provider = new GoogleAuthProvider();
 const storage = getStorage()
 
-
-// const firebaseApp = firebase.initializeApp(firebaseConfig);
-// const db = firebaseApp.firestore;
-// const auth = firebase.auth;
-// const storage = firebase.storage;
-
 export { auth, provider, storage };
-// export { auth, storage}
 export default db;
