@@ -6,6 +6,8 @@ import React, { useEffect } from "react";
  
 
 const Login = (props) => {
+  console.log(props.user)
+
   const navigate = useNavigate();
   useEffect(() => {
     props.user && navigate("/home");

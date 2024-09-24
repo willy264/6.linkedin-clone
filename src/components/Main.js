@@ -40,11 +40,11 @@ const Main = (props) => {
             </button>
           </SharedActor>
           <Description>
-
+            <img src="/image/banner-image.jpg" alt="" />
           </Description>
           <SharedImg>
             <a>
-              <img src="/images/Image.png" alt="" />
+            <img src="/image/banner-image.jpg" alt="" />
             </a>
           </SharedImg>
           <SocialCounts>
