@@ -58,8 +58,11 @@ const Header = (props) => {
             <User>
               <a>
                 <img src="/images/user.svg" alt="" />
-                <span>Me</span>
-                <img src="/images/down-icon.svg" alt="" />
+                <span>
+                  <span>Me</span>
+                  <img src="/images/down-icon.svg" alt="" />                  
+                </span>
+
               </a>
 
               <SignOut onClick={() => props.signOut()}>
@@ -92,8 +95,10 @@ const Container = styled.div`
   top: 0;
   width: 100vw;
   z-index: 100;
+  @media (max-width: 767px) {
+    padding: 15px;
+  }
 `;
-
 const Content = styled.div`
   display: flex;
   align-items: center;
@@ -101,13 +106,10 @@ const Content = styled.div`
   min-height: 100%;
   max-width: 1128px;
 `;
-
 const Logo = styled.span`
   margin-right: 8px;
   font-size: 0px;
 `;
-
-
 const Search = styled.div`
   opacity: 1;
   flex-grow: 1;
@@ -131,7 +133,6 @@ const Search = styled.div`
     }
   }
 `;
-
 const SearchIcon = styled.div`
   width: 40px;
   position: absolute;
@@ -145,7 +146,6 @@ const SearchIcon = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
 const Nav = styled.nav`
   margin-left: auto;
   display: block;
@@ -157,29 +157,23 @@ const Nav = styled.nav`
     width: 100%;
   }
 `;
-
-
 const NavListWrap = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   list-style-type: none;
-
   .active {
     span:after {
       content: "";
       transform: scaleX(1);
-      border-bottom: 6px solid var(--white, #fff);
-      border-radius: 50px;
+      border-bottom: 2px solid var(--white, #fff);
       bottom: 0;
-      left: 6%;
+      left: 0;
       position: absolute;
       transition: transform 0.2s ease-in-out;
-      width: 80%;
+      width: 100%;
       border-color: rgba(0, 0, 0, 0.9);
-    }
-  }
+    }}
 `;
-
 const NavList = styled.li`
   display: flex;
   align-items: center;
@@ -196,18 +190,15 @@ const NavList = styled.li`
     min-width: 80px;
     position: relative;
     text-decoration: none;
-
     span {
       color: rgba(0, 0, 0, 0.6);
       display: flex;
       align-items: center;
     }
-
     @media (max-width: 768px) {
       min-width: 70px;
     }
   }
-
   &:hover,
   &:active {
     a {
@@ -217,8 +208,7 @@ const NavList = styled.li`
     }
   }
 `;
-
-const SignOut = styled.div`
+const SignOut = styled(NavList)`
   position: absolute;
   top: 45px;
   background: white;
@@ -229,26 +219,30 @@ const SignOut = styled.div`
   transition-duration: 167ms;
   text-align: center;
   display: none;
+  cursor: pointer;
+  @media (max-width: 767px) {
+    position: absolute;
+    top: -45px;
+    right: 15px;
+    background: #eee;
+  }
 `;
-
-// borrowing styling from navlist
-const User = styled(NavList)` 
-/* svg inside a tag */
+const User = styled(NavList)`
   a > svg {
-    width: 24px;
+    width: 14px;
     border-radius: 50%;
-  };
+  }
 
   a > img {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-  };
+  }
 
   span {
     display: flex;
     align-items: center;
-  };
+  }
 
   &:hover {
     ${SignOut} {
@@ -259,9 +253,11 @@ const User = styled(NavList)`
   }
 `;
 
-// borrowing styling from user
 const Work = styled(User)`
   border-left: 1px solid rgba(0, 0, 0, 0.08);
+  @media (max-width: 575px) {
+    display: none;
+  }
 `;
 
 

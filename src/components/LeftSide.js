@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 
-
-const LeftSide = (props) => {
+const Leftside = (props) => {
   return (
     <Container>
       <ArtCard>
@@ -10,7 +10,9 @@ const LeftSide = (props) => {
           <CardBackground />
           <a>
             <Photo />
-            <Link>Welcome, there!</Link>
+            <Link>
+              Welcome, {props.user ? props.user.displayName : "there!"}
+            </Link>
           </a>
           <a>
             <AddPhotoText>Add a photo</AddPhotoText>
@@ -32,7 +34,6 @@ const LeftSide = (props) => {
           </span>
         </Item>
       </ArtCard>
-
       <CommunityCard>
         <a>
           <span>Groups</span>
@@ -40,25 +41,22 @@ const LeftSide = (props) => {
         <a>
           <span>
             Events
-            <img src="/images/plus-icon.svg" alt="" />
+            <img src="images/plus-icon.svg" alt="" />
           </span>
         </a>
         <a>
-          <span>Follow Hashtags</span>
+          <span>Follows Hashtags</span>
         </a>
         <a>
           <span>Discover more</span>
         </a>
       </CommunityCard>
     </Container>
-  )
-}
-
-
+  );
+};
 const Container = styled.div`
   grid-area: leftside;
 `;
-
 const ArtCard = styled.div`
   text-align: center;
   overflow: hidden;
@@ -70,14 +68,12 @@ const ArtCard = styled.div`
   border: none;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
 `;
-
 const UserInfo = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   padding: 12px 12px 16px;
   word-wrap: break-word;
   word-break: break-word;
 `;
-
 const CardBackground = styled.div`
   background: url("/images/card-bg.svg");
   background-position: center;
@@ -85,7 +81,6 @@ const CardBackground = styled.div`
   height: 54px;
   margin: -12px -12px 0;
 `;
-
 const Photo = styled.div`
   box-shadow: none;
   background-image: url("/images/photo.svg");
@@ -101,14 +96,12 @@ const Photo = styled.div`
   margin: -38px auto 12px;
   border-radius: 50%;
 `;
-
 const Link = styled.div`
   font-size: 16px;
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.9);
   font-weight: 600;
 `;
-
 const AddPhotoText = styled.div`
   color: #0a66c2;
   margin-top: 4px;
@@ -116,12 +109,11 @@ const AddPhotoText = styled.div`
   line-height: 1.33;
   font-weight: 400;
 `;
-
 const Widget = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   padding-top: 12px;
+  font-weight: 600;
   padding-bottom: 12px;
-
   & > a {
     text-decoration: none;
     display: flex;
@@ -154,11 +146,11 @@ const Widget = styled.div`
     color: rgba(0, 0, 0, 1);
   }
 `;
-
 const Item = styled.a`
   border-color: rgba(0, 0, 0, 0.8);
   text-align: left;
   padding: 12px;
+  font-weight: 600;
   font-size: 12px;
   display: block;
   span {
@@ -174,8 +166,8 @@ const Item = styled.a`
     background-color: rgba(0, 0, 0, 0.08);
   }
 `;
-
 const CommunityCard = styled(ArtCard)`
+  font-weight: 600;
   padding: 8px 0 0;
   text-align: left;
   display: flex;
@@ -198,7 +190,6 @@ const CommunityCard = styled(ArtCard)`
     &:last-child {
       color: rgba(0, 0, 0, 0.6);
       text-decoration: none;
-
       border-top: 1px solid #d6cec2;
       padding: 12px;
       &:hover {
@@ -208,5 +199,9 @@ const CommunityCard = styled(ArtCard)`
   }
 `;
 
-
-export default LeftSide
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+export default connect(mapStateToProps)(Leftside);
