@@ -1,36 +1,32 @@
-import React from 'react'
-import styled from 'styled-components'
-import LeftSide from './LeftSide';
-import Main from './Main';
-import RightSide from './RightSide';
-
-const Home = (props) => {
+import React from "react";
+import styled from "styled-components";
+import Leftside from "./LeftSide";
+import Main from "./Main";
+import Rightside from "./RightSide";
+const Home = () => {
   return (
     <Container>
       <Section>
-        <h5><a>Hiring in a hurry? - </a></h5>
-        <p>Find talented pros in record line with Upwork and keeping business moving.</p>
+        <h5>
+          <a href="#">Hiring in a hurry? - </a>
+        </h5>
+        <p>
+          Find talented pros in record time with Upwork and keep business
+          moving.
+        </p>
       </Section>
       <Layout>
-        <LeftSide />
+        <Leftside />
         <Main />
-        <RightSide />
+        <Rightside />
       </Layout>
     </Container>
-  )
-}
-
+  );
+};
 const Container = styled.div`
   padding-top: 52px;
   max-width: 100%;
 `;
-
-const Content = styled.div`
-  max-width: 1128px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
 const Section = styled.section`
   min-height: 50px;
   padding: 16px 0;
@@ -46,7 +42,6 @@ const Section = styled.section`
       font-weight: 700;
     }
   }
-
   p {
     font-size: 14px;
     color: #434649;
@@ -55,24 +50,19 @@ const Section = styled.section`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: 0 5px;
+    padding: 15px 5px;
   }
 `;
-
 const Layout = styled.div`
   display: grid;
   grid-template-areas: "leftside main rightside";
   grid-template-columns: minmax(0, 5fr) minmax(0, 12fr) minmax(300px, 7fr);
   column-gap: 25px;
   row-gap: 25px;
-  /* grid-template-row: auto; */
-  margin: 25px 0;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
     padding: 0 5px;
   }
 `;
-
-
-export default Home
+export default Home;

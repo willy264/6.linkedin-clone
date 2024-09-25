@@ -276,7 +276,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    // signOut: () => dispatch(signOutAPI()),
+    signOut: () => dispatch(signOutAPI()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
