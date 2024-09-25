@@ -1,10 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import { connect } from "react-redux";
 import { signOutAPI } from "../redux/actions";
 
 const Header = (props) => {
-
   return (
     <Container>
       <Content>
@@ -15,42 +14,41 @@ const Header = (props) => {
         </Logo>
         <Search>
           <div>
-            <input type="text" placeholder='Search' />
+            <input type="text" placeholder="Search" />
+            <SearchIcon>
+              <img src="/images/search-icon.svg" alt="" />
+            </SearchIcon>
           </div>
-          <SearchIcon>
-            <img src="/images/search-icon.svg" alt="" />
-          </SearchIcon>
         </Search>
         <Nav>
           <NavListWrap>
-            <NavList className='active'>
+            <NavList className="active">
               <a>
-              <img src="/images/nav-home.svg" alt="" />
-              <span>Home</span>
+                <img src="/images/nav-home.svg" alt="" />
+                <span>Home</span>
               </a>
             </NavList>
-
             <NavList>
               <a>
                 <img src="/images/nav-network.svg" alt="" />
+
                 <span>My Network</span>
               </a>
             </NavList>
-
             <NavList>
               <a>
                 <img src="/images/nav-jobs.svg" alt="" />
+
                 <span>Jobs</span>
               </a>
             </NavList>
-
             <NavList>
               <a>
                 <img src="/images/nav-messaging.svg" alt="" />
+
                 <span>Messaging</span>
               </a>
             </NavList>
-
             <NavList>
               <a>
                 <img src="/images/nav-notifications.svg" alt="" />
@@ -64,18 +62,16 @@ const Header = (props) => {
                 ) : (
                   <img src="/images/user.svg" alt="" />
                 )}
+
                 <span>
-                  <span>Me</span>
-                  <img src="/images/down-icon.svg" alt="" />                  
+                  Me
+                  <img src="/images/down-icon.svg" alt="" />
                 </span>
-
               </a>
-
               <SignOut onClick={() => props.signOut()}>
                 <a>Sign Out</a>
               </SignOut>
             </User>
-
             <Work>
               <a>
                 <img src="/images/nav-work.svg" alt="" />
@@ -89,11 +85,8 @@ const Header = (props) => {
         </Nav>
       </Content>
     </Container>
-  )
-
-}
-
-
+  );
+};
 const Container = styled.div`
   background-color: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -237,7 +230,7 @@ const SignOut = styled(NavList)`
 `;
 const User = styled(NavList)`
   a > svg {
-    width: 14px;
+    width: 24px;
     border-radius: 50%;
   }
 

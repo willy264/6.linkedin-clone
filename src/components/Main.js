@@ -11,7 +11,7 @@ const Main = (props) => {
     setShowModal(!showModal);
   };
   useEffect(() => {
-    // props.getArticles();
+    props.getArticles();
   }, []);
 
   return (
