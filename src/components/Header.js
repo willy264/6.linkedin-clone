@@ -2,10 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { signOutAPI } from "../redux/actions";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Header = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
   return (
     <Container>
       <Content>
@@ -24,7 +30,7 @@ const Header = (props) => {
         </Search>
         <Nav>
           <NavListWrap>
-            <NavList className="active">
+            <NavList className={isActive('/home') ? 'active' : ''}>
               <Link to="/home">
                 <a>
                   <img src="/images/nav-home.svg" alt="" />
@@ -32,7 +38,7 @@ const Header = (props) => {
                 </a>              
               </Link>
             </NavList>
-            <NavList>
+            <NavList className={isActive('/mynetwork') ? 'active' : ''}>
               <Link to="/mynetwork">
                 <a>
                   <img src="/images/nav-network.svg" alt="" />
@@ -40,7 +46,7 @@ const Header = (props) => {
                 </a>
               </Link>
             </NavList>
-            <NavList>
+            <NavList className={isActive('/jobs') ? 'active' : ''}>
               <Link to="/jobs">
                 <a>
                   <img src="/images/nav-jobs.svg" alt="" />
@@ -48,7 +54,7 @@ const Header = (props) => {
                 </a>              
               </Link>
             </NavList>
-            <NavList>
+            <NavList className={isActive('/messaging') ? 'active' : ''}>
               <Link to="/messaging">
                 <a>
                   <img src="/images/nav-messaging.svg" alt="" />
@@ -56,7 +62,7 @@ const Header = (props) => {
                 </a>              
               </Link>
             </NavList>
-            <NavList>
+            <NavList className={isActive('/notifications') ? 'active' : ''}>
               <Link to="/notifications">
                 <a>
                   <img src="/images/nav-notifications.svg" alt="" />
@@ -173,11 +179,15 @@ const NavListWrap = styled.ul`
   flex-wrap: nowrap;
   list-style-type: none;
   .active {
+    span {
+      color: rgba(0, 0, 0, 0.9);
+    }
     span:after {
       content: "";
       transform: scaleX(1);
-      border-bottom: 2px solid var(--white, #fff);
-      bottom: 0;
+      border-bottom: 3px solid var(--white, #fff);
+      border-radius: 20px;
+      bottom: 2px;
       left: 0;
       position: absolute;
       transition: transform 0.2s ease-in-out;
@@ -209,14 +219,6 @@ const NavList = styled.li`
     }
     @media (max-width: 768px) {
       min-width: 70px;
-    }
-  }
-  &:hover,
-  &:active {
-    a {
-      span {
-        color: rgba(0, 0, 0, 0.9);
-      }
     }
   }
 `;
