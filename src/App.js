@@ -22,11 +22,12 @@ const App = (props) => {
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path="/" element={<Login />} />
+          {/* <Route exact path="/" element={<Login />} /> */}
           <Route
             path="/*"
+            exact
             element={
-              <RequireAuth>
+              // <RequireAuth>
                 <div>
                   <Header />
                   <Routes>
@@ -37,49 +38,10 @@ const App = (props) => {
                     <Route path="/notifications" element={<Notifications />} />
                   </Routes>
                 </div>
-              </RequireAuth>
+              // </RequireAuth>
             }
           />
         </Routes>
-        {/* <Routes>
-          <Route exact path='/' element={<Login />}/>
-          <Route path="/home" element={
-            <RequireAuth>
-              <Body />
-            </RequireAuth>
-          }/>
-        </Routes> */}
-        {/* <div >
-        <Header />
-        <Routes>
-          <Route path="/home" element={
-            <RequireAuth>
-              <MainHome />
-            </RequireAuth>
-          }/>
-          <Route path='/mynetwork' element={
-            <RequireAuth>
-              <MyNetwork />
-            </RequireAuth>
-            } />
-          <Route path='/jobs' element={
-            <RequireAuth>
-              <Jobs />
-            </RequireAuth>
-           } />
-          <Route path='/messaging' element={
-            <RequireAuth>
-              <Messaging />
-            </RequireAuth>
-            } />
-          <Route path='/notifications' element={
-            <RequireAuth>
-              <Notifications />
-            </RequireAuth>
-            } />
-        </Routes>          
-        </div> */}
-
       </Router>
     </div>
   );
