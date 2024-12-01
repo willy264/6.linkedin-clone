@@ -3,10 +3,14 @@ import './App.css';
 import React, { useEffect } from "react";
 import Login from './components/Login';
 import Header  from './components/Header';
-import Home from './components/Home';
 import { getUserAuth } from "./redux/actions";
 import { connect } from "react-redux";
 import RequireAuth from "./components/RequireAuth";
+import MyNetwork from './pages/MyNetwork';
+import Jobs from './pages/Jobs';
+import Messaging from './pages/Messaging';
+import Notifications from './pages/Notifications';
+import Home from './components/Home';
 
 
 const App = (props) => {
@@ -14,20 +18,68 @@ const App = (props) => {
     props.getUserAuth();
   }, []);
 
-// function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
+          <Route exact path="/" element={<Login />} />
+          <Route
+            path="/*"
+            element={
+              <RequireAuth>
+                <div>
+                  <Header />
+                  <Routes>
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/mynetwork" element={<MyNetwork />} />
+                    <Route path="/jobs" element={<Jobs />} />
+                    <Route path="/messaging" element={<Messaging />} />
+                    <Route path="/notifications" element={<Notifications />} />
+                  </Routes>
+                </div>
+              </RequireAuth>
+            }
+          />
+        </Routes>
+        {/* <Routes>
           <Route exact path='/' element={<Login />}/>
           <Route path="/home" element={
-              <RequireAuth>
-                <Header />
-                <Home />
-              </RequireAuth>
-            }/>
+            <RequireAuth>
+              <Body />
+            </RequireAuth>
+          }/>
+        </Routes> */}
+        {/* <div >
+        <Header />
+        <Routes>
+          <Route path="/home" element={
+            <RequireAuth>
+              <MainHome />
+            </RequireAuth>
+          }/>
+          <Route path='/mynetwork' element={
+            <RequireAuth>
+              <MyNetwork />
+            </RequireAuth>
+            } />
+          <Route path='/jobs' element={
+            <RequireAuth>
+              <Jobs />
+            </RequireAuth>
+           } />
+          <Route path='/messaging' element={
+            <RequireAuth>
+              <Messaging />
+            </RequireAuth>
+            } />
+          <Route path='/notifications' element={
+            <RequireAuth>
+              <Notifications />
+            </RequireAuth>
+            } />
+        </Routes>          
+        </div> */}
 
-        </Routes>
       </Router>
     </div>
   );

@@ -2,15 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { signOutAPI } from "../redux/actions";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = (props) => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Content>
         <Logo>
-          <a href="/home">
+          <Link to="/home">
             <img src="/images/home-logo.svg" alt="" />
-          </a>
+          </Link>
         </Logo>
         <Search>
           <div>
@@ -23,37 +25,44 @@ const Header = (props) => {
         <Nav>
           <NavListWrap>
             <NavList className="active">
-              <a>
-                <img src="/images/nav-home.svg" alt="" />
-                <span>Home</span>
-              </a>
+              <Link to="/home">
+                <a>
+                  <img src="/images/nav-home.svg" alt="" />
+                  <span>Home</span>
+                </a>              
+              </Link>
             </NavList>
             <NavList>
-              <a>
-                <img src="/images/nav-network.svg" alt="" />
-
-                <span>My Network</span>
-              </a>
+              <Link to="/mynetwork">
+                <a>
+                  <img src="/images/nav-network.svg" alt="" />
+                  <span>My Network</span>
+                </a>
+              </Link>
             </NavList>
             <NavList>
-              <a>
-                <img src="/images/nav-jobs.svg" alt="" />
-
-                <span>Jobs</span>
-              </a>
+              <Link to="/jobs">
+                <a>
+                  <img src="/images/nav-jobs.svg" alt="" />
+                  <span>Jobs</span>
+                </a>              
+              </Link>
             </NavList>
             <NavList>
-              <a>
-                <img src="/images/nav-messaging.svg" alt="" />
-
-                <span>Messaging</span>
-              </a>
+              <Link to="/messaging">
+                <a>
+                  <img src="/images/nav-messaging.svg" alt="" />
+                  <span>Messaging</span>
+                </a>              
+              </Link>
             </NavList>
             <NavList>
-              <a>
-                <img src="/images/nav-notifications.svg" alt="" />
-                <span>Notifications</span>
-              </a>
+              <Link to="/notifications">
+                <a>
+                  <img src="/images/nav-notifications.svg" alt="" />
+                  <span>Notifications</span>
+                </a>              
+              </Link>
             </NavList>
             <User>
               <a>
@@ -110,6 +119,7 @@ const Content = styled.div`
 const Logo = styled.span`
   margin-right: 8px;
   font-size: 0px;
+  cursor: pointer;
 `;
 const Search = styled.div`
   opacity: 1;
@@ -191,6 +201,7 @@ const NavList = styled.li`
     min-width: 80px;
     position: relative;
     text-decoration: none;
+    cursor: pointer;
     span {
       color: rgba(0, 0, 0, 0.6);
       display: flex;
